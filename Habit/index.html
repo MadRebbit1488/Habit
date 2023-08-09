@@ -1,0 +1,100 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Habit up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet">
+  </head>
+  <body>
+
+
+<!-- app = application -->
+    <div class="app">
+<!-- пінель можна зроити не div a nav -->
+<!-- Панель навігації -->
+      <div class="panel">
+          <!-- Логотип -->
+        <img class="logo" src="/images/logo.svg" alt="Логотип Habit Up">
+        <!-- Меню -->
+        <nav class="menu">
+          <!-- Обгортка - список меню -->
+          <div class="menu__list"></div>
+          <!-- Кнопка додавання -->
+          <button class="menu__add" onclick="togglePopup()">
+            <img src="/images/add.svg" alt="Додати звичку">
+          </button>
+        </nav>
+      </div>
+
+
+      <div class=content>
+        <header>
+          <h1 class="h1">-</h1>
+          <div class="progress">
+            <div class="progress__text">
+              <div class="progress__name">Прогрес</div>
+              <div class="progress__percent">%</div>
+            </div>
+              <!-- смуга завантаження -->
+            <div class="progress__bar">
+                <!-- те що її заповнює -->
+                <div class="progress__cover-bar"></div>
+            </div>
+          </div>
+        </header>
+        <main>
+          <div id="days"></div>
+          <div class="habit">
+            <!-- Номер дня -->
+            <div class="habit__day">День _</div>
+            <!-- Коментар -->
+            <form class="habit__form" onsubmit="addDays(event)">
+              <input name="comment" class="input_icon" type="text" placeholder="Коментар"/>
+              <img class="input__icon" 
+              src="/images/comment.svg" 
+              alt="Іконка каментаря">
+              <button class="button" type="submit">Готово</button>
+            </form>
+          </div>
+        </main>
+        <!-- Закриваючий тег класу контент -->
+      </div>
+
+      <!-- Верстка попап -->
+      <div class="cover cover_hiden" id="add-habit-popup">
+        <div class="popup">
+          <h2>Нова звичка</h2>
+          <div class="icon-label">Іконка</div>
+          <!-- Тут мають розміщуватись кнопки -->
+          <div class="icon-select">
+            <button class="icon icon_active" onclick="setIcon(this, 'sport')">
+              <img src="/images/sport.svg" alt="Спорт">
+            </button>
+            <button class="icon " onclick="setIcon(this, 'water')">
+              <img src="/images/water.svg" alt="Напої">
+            </button>
+            <button class="icon " onclick="setIcon(this,'food')">
+              <img src="/images/food.svg" alt="Їжа">
+            </button>
+          </div>
+          <form class="popup__form" onsubmit="addhabit(event)">
+            <input type="text" name="name" placeholder="Назва">
+            <!-- Даний рядок не відображається , value="sport" значення за замовчуванням-->
+            <input type="text" name="icon" hidden placeholder="Іконка" value="sport">
+            <input type="number" name="target" placeholder="Мета">
+            <button class="button" type="submit">Додати</button>
+          </form>
+          <button class="popup__close" onclick="togglePopup()">
+            <img src="/images/close.svg" alt="Закрити попап">
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/app.js"></script>
+  </body>
+  </html>

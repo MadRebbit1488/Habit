@@ -1,0 +1,374 @@
+* {
+  box-sizing:  border-box;
+}
+
+body {
+  font-family: 'Comfortaa', cursive;
+  margin: 0;
+  background-color: #f3f6fd;
+  /* Встановлює значення за замовчуванням при потребі переписуємо */
+  font-weight: 400;
+}
+
+.app {
+  /* елемент поводиться як блоковий */
+  display: flex;
+  /* Відстань від контенту */
+  gap: 50px;
+}
+
+/* Відступи між логотипами */
+.logo {
+  margin-bottom: 50px;
+}
+
+.panel {
+  background: white;
+  /* Мінімальна висота панелі */
+  min-height: 100vh;
+  padding: 30px ;
+}
+
+.menu {
+  /* Все теж саме що і в меню ліст щоб щробити віступ нижньої іконки з додаванням звички */
+  display: flex;
+  /* Виставляє елементи в колонку */
+  flex-direction: column;
+  /* відступ між елементами меню */
+  gap: 25px;
+  /* Розташовує елементи по центру контейнера */
+  align-items: center;
+}
+
+.menu__list {
+  display: flex;
+  /* Виставляє елементи в колонку */
+  flex-direction: column;
+  gap: 25px; 
+  align-items: center;
+}
+
+/* Стилізація іконок */
+.menu__item {
+  background: #FFF;
+  box-shadow: 0px 8px 14px 0px rgba(62, 107, 224, 0.12);
+  border-radius: 14px;
+  /* Але так як це кнопки а не дів потрібно дещо підправати */
+  border: none;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}
+
+/* hover використовується для вибірки та задавання стилів елементам на які наведений курсор */
+.menu__item:hover {
+  background: #6a6afb;
+}
+
+/* Властивысть filter визначає які візуальні властивості використовуються до елемента
+  -brightness(%) - яскравість зображення(0 робить зображення чьорним)
+  -invert(%) - інвертує кольори в зображенні(1 повністю інвертує кольорову картинку)
+*/
+.menu__item:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.menu__item_active {
+  background: #5051F9;
+}
+
+
+.menu__item_active img {
+  filter: brightness(0) invert(1);
+}
+
+/* кнопка додавання звички */
+.menu__add {
+  background: none;
+  border: 1px solid #CAD5FF;
+  border-radius: 14px;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}
+
+.menu__add:hover {
+  background: #eff2ff;
+}
+
+.content {
+  min-width: 900px;
+  padding:  45px;
+
+}
+
+header {
+  display: flex;
+  /* justify-content вирівнює елемент по горизонталі
+  space-between - рівномірно розподіляє флєкси по всьому рядку. Перший і останній притискаються до країв контейнера*/
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  color: #000;
+  font-size: 30px;
+  line-height: 33px;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  /* Відсткп від слова прогрес до лінії завантаження */
+  gap: 12px;
+  min-width: 235px;
+}
+
+.progress__text {
+  display: flex;
+  /* Прогрес і 80% стають в одну лінію */
+  justify-content: space-between;
+}
+
+.progress__name {
+  font-size: 14px;
+  line-height: 16px;
+  color: #232360;
+}
+
+.progress__percent {
+  font-size: 12px;
+  line-height: 13px;
+  color: #768396;
+}
+
+/*Стилізація смуги прогресу  */
+.progress__bar {
+  width: 100%;
+  background: #E6E9ED;
+  border-radius: 4px;
+  height: 5px;
+  /* relative розміщує елемент відносно його поточного положення*/
+  position: relative;
+}
+
+.progress__cover-bar{
+  /* absolute - видаляє елемент з загального потоку і замінює місце що звільнив елемент іншим елементом */
+  position: absolute;
+  /* transition - встановлює ефект між двома станами елемента */
+  transition: all 1s;
+  /* це буде регулюватись за допомогою style */
+  height: 5px;
+  border-radius: 4px;
+  background: #5051F9;
+}
+
+main {
+  margin-top: 30px;
+}
+
+.habit {
+  border-radius: 10px;
+  background: #FFF;
+  /* Елементи стають  вряд, так як поводять себе як блочний елемент */
+  display: flex;
+  align-items: center;
+  /* Відступи між елементами */
+  margin-bottom: 12px;
+}
+
+.habit__day {
+  background: #FBFAFF;
+  border-radius: 10px 0 0 10px;
+  border-right:  1px solid #E7EBFB;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 20px 40px;
+  min-width: 150px;
+}
+
+.habit__comment {
+  color: #23235F;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 20px 25px;
+}
+
+.habit__delete {
+  margin-left: auto;
+  margin-right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.habit__delete:hover {
+  background: #eff2ff;
+}
+
+/* Стилізація коментаря */
+input {
+  border-radius: 9px;
+  border: 1px solid #E7EBFB;
+  background: #FFF;
+  padding: 12px 20px;
+  font-family: 'Comfortaa', cursive;
+  /* Вказує параметри елемента щоб він заповнював доступний простір */
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+input::placeholder {
+  color: #8899A8;;
+}
+
+input.error {
+  border: 1px solid red;
+}
+
+.habit__form {
+  display: flex;
+  gap: 15px;
+  /* Розтягує елемент на всю ширину */
+  width: 100%;
+  padding: 0px  10px 0 25px;
+  position: relative;
+}
+
+.input_icon{
+  padding-left: 45px;
+}
+
+.input__icon {
+  position: absolute;
+  top: 11px;
+  left: 45px;
+}
+
+.button {
+  border-radius: 9px;
+  background: #EDECFE;
+  border: none;
+  color: #5051F9;
+  /* визначає стиль шрифту: курсив або похилий */
+  font-size: 13px;
+  line-height: 14px;
+  padding: 14px 30px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #d1d0df;
+}
+
+
+
+
+
+
+/* Стилізація popup. Потрібно зробити так щоб cover закривав все */
+.cover {
+  /* Спочатку фіксуємо */
+  position: fixed;
+  /* Розтягуємо */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.25);
+  /* Центруємо */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover_hiden {
+  display: none;
+}
+
+.popup {
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0px 8px 14px 12px rgba(56, 56, 56, 0.05);
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup__close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.icon-label {
+  color: #768396;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 10px;
+}
+
+.icon-select {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+/* Стилізація неактивних іконок */
+.icon {
+  border-radius: 14px;
+  border: 1px solid #5051F9;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+
+
+.icon_active {
+  background: #5051F9;
+}
+
+.icon:hover {
+  background: #6a6afb;
+}
+
+.icon:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.icon_active img {
+  filter: brightness(0) invert(1);
+}
+
+.popup__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.popup__form input {
+  width: 100%;
+}
